@@ -14,8 +14,21 @@ export function getList() {
 }
 
 export function create(values) {
+    return submit(values, 'post')
+}
+
+export function update(values) {
+    return submit(values, 'put')
+}
+
+export function remove(values) {
+    return submit(values, 'delete')
+}
+
+function submit(values, method) {
     return dispatch => {
-        axios.post(`${BASE_URL}/billingCycles`, values)
+        const id = values._id ? values._id : ''
+        axios[method](`${BASE_URL}/billingCycles/${id}`, values)
             .then(resp => {
                 toastr.success('Sucesso', 'Operação Realizada com sucesso.')
                 dispatch([ 
@@ -35,6 +48,30 @@ export function showUpdate(billingCycle) {
     return [ 
         showTabs('tabUpdate'),
         selectTab('tabUpdate'),
-        initialize('billingCycleForm', billingCycle)
+        select(billingCycle)
+    ]
+}
+
+export function showDelete(billingCycle) {
+    return [ 
+        showTabs('tabDelete'),
+        selectTab('tabDelete'),
+        select(billingCycle)
+    ]
+}
+
+export function select(billingCycle) {
+    return {
+        type: 'BILLING_CYCLE_SELECTED',
+        payload: billingCycle
+    }
+}
+
+export function cancel() {
+    return [ 
+        showTabs('tabList', 'tabCreate'),
+        selectTab('tabList'),
+        resetForm('billingCycleForm'),
+        { type: 'BILLING_CYCLE_CANCELED' }
     ]
 }
