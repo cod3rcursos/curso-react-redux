@@ -4,6 +4,7 @@ import { reset as resetForm, initialize } from 'redux-form'
 import { showTabs, selectTab } from '../common/tab/tabActions'
 
 const BASE_URL = 'http://localhost:3003/api'
+const INITIAL_VALUES = {credits: [{}], debts: [{}]}
 
 export function getList() {
     const request = axios.get(`${BASE_URL}/billingCycles`)
@@ -31,12 +32,7 @@ function submit(values, method) {
         axios[method](`${BASE_URL}/billingCycles/${id}`, values)
             .then(resp => {
                 toastr.success('Sucesso', 'Operação Realizada com sucesso.')
-                dispatch([ 
-                    resetForm('billingCycleForm'),
-                    getList(),
-                    selectTab('tabList'),
-                    showTabs('tabList', 'tabCreate')
-                ])
+                dispatch(init())
             })
             .catch(e => {
                 e.response.data.errors.forEach(error => toastr.error('Erro', error))
@@ -48,7 +44,7 @@ export function showUpdate(billingCycle) {
     return [ 
         showTabs('tabUpdate'),
         selectTab('tabUpdate'),
-        select(billingCycle)
+        initialize('billingCycleForm', billingCycle)
     ]
 }
 
@@ -56,22 +52,15 @@ export function showDelete(billingCycle) {
     return [ 
         showTabs('tabDelete'),
         selectTab('tabDelete'),
-        select(billingCycle)
+        initialize('billingCycleForm', billingCycle)
     ]
 }
 
-export function select(billingCycle) {
-    return {
-        type: 'BILLING_CYCLE_SELECTED',
-        payload: billingCycle
-    }
-}
-
-export function cancel() {
-    return [ 
+export function init() {
+    return [
         showTabs('tabList', 'tabCreate'),
         selectTab('tabList'),
-        resetForm('billingCycleForm'),
-        { type: 'BILLING_CYCLE_CANCELED' }
+        getList(),
+        initialize('billingCycleForm', INITIAL_VALUES)
     ]
 }
