@@ -1,5 +1,6 @@
 const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   entry: "./src/index.jsx",
@@ -25,7 +26,8 @@ module.exports = {
       jQuery: "jquery",
       "window.jQuery": "jquery"
     }),
-    new ExtractTextPlugin("app.css")
+    new ExtractTextPlugin("app.css"),
+    new Dotenv()
   ],
   module: {
     loaders: [
