@@ -27,6 +27,7 @@ module.exports = {
     quotes: ["error", "double"],
     semi: ["error", "always"],
     "react/prop-types": 0,
-    "react/display-name": 0
+    "react/display-name": 0,
+    "max-len": [2, {"code": 140, "tabWidth": 4, "ignoreUrls": true}]
   }
 };

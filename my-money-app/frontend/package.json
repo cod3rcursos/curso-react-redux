@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server --progress --colors --inline --hot",
     "production": "webpack --progress -p",
-    "format": "eslint src/*.js src/**/*.js src/*.jsx src/**/*.jsx --fix"
+    "format": "eslint . --fix --ext .jsx --ext .jsx"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +26,7 @@
     "extract-text-webpack-plugin": "1.0.1",
     "file-loader": "0.9.0",
     "font-awesome": "4.7.0",
+    "husky": "^3.1.0",
     "ionicons": "3.0.0",
     "lodash": "4.17.4",
     "react": "15.4.2",
@@ -41,5 +42,10 @@
     "style-loader": "0.13.1",
     "webpack": "1.14.0",
     "webpack-dev-server": "1.16.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run format"
+    }
   }
 }
