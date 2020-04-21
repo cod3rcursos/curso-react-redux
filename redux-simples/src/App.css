@@ -1,0 +1,14 @@
+
+.App {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+h1 {
+  font-weight: 200;
+}
+
+.linha {
+  display: flex;
+}
