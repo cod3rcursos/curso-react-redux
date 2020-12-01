@@ -1,0 +1,38 @@
+.Menu {
+    display: flex;
+    flex-basis: 250px;
+
+    background: linear-gradient(to top, #00b4db, #006c90);
+    
+    z-index: 1;
+    -webkit-box-shadow: 4px 0px 17px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 0px 17px -5px rgba(0,0,0,0.75);
+    box-shadow: 4px 0px 17px -5px rgba(0,0,0,0.75);
+}
+
+.Menu nav {
+    flex-grow: 1;
+}
+
+.Menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.Menu li {
+    display: flex;
+}
+
+.Menu li a {
+    flex: 1;
+    padding: 10px;
+    margin-bottom: 10px;
+
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.Menu li a:hover {
+    background: #00000020;
+}

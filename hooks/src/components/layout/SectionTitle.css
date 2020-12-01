@@ -1,0 +1,10 @@
+.SectionTitle {
+    border-bottom: 3px solid #006c90;
+}
+
+.SectionTitle h3 {
+    margin: 0;
+    margin-bottom: 5px;
+    font-size: 2rem;
+    font-weight: 400;
+}

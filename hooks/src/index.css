@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.text {
+    font-weight: 300;
+    font-size: 5rem;
+}
+
+.red {
+    font-weight: 700;
+    color: red;
+}
+
+.input {
+    font-weight: 300;
+    font-size: 4rem;
+    margin: 20px 0px;
+}
+
+.btn {
+    border-radius: 25px;
+    margin: 10px;
+    padding: 15px 35px;
+    border: none;
+    outline: none;
+    background-color: #0092c3;
+
+    font-size: 3rem;
+    color: #fff;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
